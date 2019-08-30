@@ -12,8 +12,6 @@
 
 '''
 
-
-
 '''
 
 #快速排序1
@@ -48,25 +46,40 @@ def quick_sort(array):
         return quick_sort(less) + [pivot] + quick_sort(graeter)
 '''
 
-def partition(array,left,right):
+
+'''
+上面的代码虽然短小利于理解，但是其效率很低，主要体现在以下方面：
+
+    分组基准的选取过于随便，不一定可以取到列表的中间值
+    空间复杂度大，使用了两个列表解析式，而且每次选取进行比较时需要遍历整个序列。
+    若序列长度过于小(比如只有几个元素)，快排效率就不如插入排序了。
+    递归影响性能，最好进行优化。
+
+'''
+
+
+# 快速排序2
+def partition(array, left, right):
     pivot = array[right]
+    i = left - 1
+    for j in range(left, right):
+        if array[j] < pivot:
+            i += 1
+            array[i], array[j] = array[j], array[i]
+    array[right], array[i + 1] = array[i + 1], array[right]
 
-    i=left-1
-    for j in range(1,right):
-        if array[j]<pivot:
-            i+=1
-            array[i],array[j]=array[j],array[i]
-    array[right],array[i+1] = array[i+1],array[right]
-
-    return  i+1 #返回的是原数组中 pivot的下表
-
+    return i + 1  # 返回的是原数组中 pivot的下表
 
 
-
-
-
+def quick_sort(array, left, right):
+    if left < right:
+        pivot_index = partition(array, left, right)
+        quick_sort(array, left, pivot_index - 1)
+        quick_sort(array, pivot_index + 1, right)
 
 
 if __name__ == '__main__':
-    array = [1,83,42,5543,6,90]
-    print(quick_sort(array))
+    array = [3, 2, 4, 1, 6]
+    print('原始列表：', array)
+    quick_sort(array, 0, len(array) - 1)
+    print('排序后：  ', array)
