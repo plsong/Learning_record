@@ -68,12 +68,12 @@ def partition(array, left, right):
             array[i], array[j] = array[j], array[i]
     array[right], array[i + 1] = array[i + 1], array[right]
 
-    return i + 1  # 返回的是原数组中 pivot的下表
+    return i + 1  # 返回的是原数组中 pivot的下标
 
 
 def quick_sort(array, left, right):
     if left < right:
-        pivot_index = partition(array, left, right)
+        pivot_index = partition(array, left, right) #取出pivot的下标
         quick_sort(array, left, pivot_index - 1)
         quick_sort(array, pivot_index + 1, right)
 

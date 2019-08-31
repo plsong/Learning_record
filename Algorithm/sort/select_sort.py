@@ -6,7 +6,6 @@
 
 def select_sort(array):
     new_array = []
-
     length = len(array)
     for i in range(0, length):
         samil = array[0]
