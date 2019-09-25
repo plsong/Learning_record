@@ -7,13 +7,23 @@ def bubble_sort(array):
     length = len(array)
     for i in range(length-1):
         for j in range(length - i -1):
-            if array[j] > array[j+1]:
+            if array[j] < array[j+1]:
                 array[j], array[j+1] = array[j+1], array[j]
+    return array
+
+
+def bubble_sort1(array):
+    length = len(array)
+    for i in range(length):
+        for j in range(length ):
+            if array[i] < array[j]:
+                array[i], array[j] = array[j], array[i]
+        print('\n',array[0])
     return array
 
 if __name__ == '__main__':
     array=[1333,23,3,55,4,90,893274,444,4,2345,65]
-    print(bubble_sort(array))
+    print(bubble_sort1(array))
 
 
 '''
