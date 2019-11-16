@@ -1,6 +1,6 @@
 # Learning_record
 
-2019.11.16
+2019.11.16 Typor，markdown reader
 
 发现了个本地编辑md的软件-Typor-a markdown editor,markdown reader，非常好用，[网址](https://www.typora.io/)
 
